@@ -1,0 +1,43 @@
+#!/bin/bash
+function compile-it() {
+    pushd ~/prog/closure-test > /dev/null
+
+    GOOG_PATH='node_modules/google-closure-library/closure/goog'
+    COMPILER_PATH='node_modules/google-closure-compiler/compiler.jar'
+
+    java  -jar "${COMPILER_PATH}" \
+          --language_in=ECMASCRIPT5_STRICT \
+          --checks_only \
+          --jscomp_error='*' \
+          --warning_level=VERBOSE \
+          --new_type_inf \
+          --dependency_mode='STRICT' \
+          --assume_function_wrapper \
+          --hide_warnings_for='goog' \
+          --js "!${GOOG_PATH}/**_test.js" \
+          --js "!${GOOG_PATH}/**_perf.js" \
+          --js "${GOOG_PATH}/base.js" \
+          --js "${GOOG_PATH}/array/**.js" \
+          --js "${GOOG_PATH}/asserts/**.js" \
+          --js "${GOOG_PATH}/async/**.js" \
+          --js "${GOOG_PATH}/debug/**.js" \
+          --js "${GOOG_PATH}/disposable/**.js" \
+          --js "${GOOG_PATH}/dom/**.js" \
+          --js "${GOOG_PATH}/fs/**.js" \
+          --js "${GOOG_PATH}/functions/**.js" \
+          --js "${GOOG_PATH}/html/**.js" \
+          --js "${GOOG_PATH}/i18n/**.js" \
+          --js "${GOOG_PATH}/iter/**.js" \
+          --js "${GOOG_PATH}/labs/**.js" \
+          --js "${GOOG_PATH}/math/**.js" \
+          --js "${GOOG_PATH}/object/**.js" \
+          --js "${GOOG_PATH}/string/**.js" \
+          --js "${GOOG_PATH}/structs/**.js" \
+          --js "${GOOG_PATH}/useragent/**.js"\
+          --js 'index.js' \
+          --entry_point='base.index'
+
+
+
+    popd > /dev/null
+}
