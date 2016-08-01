@@ -11,5 +11,15 @@
   "dependencies": {
     "google-closure-compiler": "^20160713.2.0",
     "google-closure-library": "^20160713.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.2.0",
+    "eslint-config-google": "^0.6.0"
+  },
+  "scripts": {
+      "lint": "eslint ."
+  },
+  "eslintConfig": {
+      "extends": "google"
   }
 }
