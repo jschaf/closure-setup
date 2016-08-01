@@ -1,13 +1,13 @@
-goog.provide('base.index')
+goog.module('base.index')
 
-goog.require("goog.dom");
-goog.require("goog.dom.classes");
+var dom = goog.require("goog.dom");
+var classes = goog.require("goog.dom.classes");
 
-var d1 = goog.dom.getElement("decorateme-1");
-var d2 = goog.dom.getElement("decorateme-2");
-goog.dom.classes.toggle(d1, "aaa");
-goog.dom.classes.remove(d1, "bbb");
-goog.dom.classes.add(d2, "bbb");
+var d1 = dom.getElement("decorateme-1");
+var d2 = dom.getElement("decorateme-2");
+classes.toggle(d1, "aaa");
+classes.remove(d1, "bbb");
+classes.add(d2, "bbb");
 
 /** @const {number} */
 var YOLO = 2;
@@ -21,8 +21,10 @@ function hello(longName) {
 }
 
 /** @record */
-base.index = function() {};
+var index = function() {};
 
 YOLO = 3;
 
 hello(3, 2);
+
+exports = index;
